@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 using ITEA_Collections.Base;
 using ITEA_Collections.Common;
@@ -16,12 +15,20 @@ namespace ITEA_Collections
     {
         static void Main(string[] args)
         {
-            var str = "Hello world";
-            Console.WriteLine(string.Concat(str.Reverse()));
-            str.ToList().ForEach(x => Console.WriteLine(x));
+            //var str = "Hello world";
+            //Console.WriteLine(string.Concat(str.Reverse()));
+            //str.ToList().ForEach(x => Console.WriteLine(x));
+
+            var arrayL = new List<IPerson>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                arrayL.Add(new Person());
+            }
+
             //BaseExamples();
             //Lesson();
-            Additional();
+            // Additional();
             #region Homework
             IBaseCollectionUsing collectionUsing = new ArrayListUsing();
             BaseUsingTest.Execute(ref collectionUsing);
