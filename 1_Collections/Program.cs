@@ -26,6 +26,9 @@ namespace ITEA_Collections
                 arrayL.Add(new Person());
             }
 
+            IBaseCollectionUsing GenericList = new GenericListUsing();
+            IBaseCollectionUsing Dictionary = new DictionaryUsing();
+            BaseUsingTest.Execute(ref Dictionary);
             //BaseExamples();
             //Lesson();
             // Additional();
