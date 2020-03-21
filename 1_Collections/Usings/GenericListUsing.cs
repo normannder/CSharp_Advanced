@@ -24,7 +24,7 @@ namespace ITEA_Collections.Usings
             if (ts is null)
                 Extensions.ToConsole($"Array is null!", ConsoleColor.Red);
             else
-                foreach (string item in ts)
+                foreach (var item in ts)
                     List.Add(item.ToString());
         }
 

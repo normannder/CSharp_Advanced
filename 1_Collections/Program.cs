@@ -28,13 +28,11 @@ namespace ITEA_Collections
 
             IBaseCollectionUsing GenericList = new GenericListUsing();
             IBaseCollectionUsing Dictionary = new DictionaryUsing();
-            BaseUsingTest.Execute(ref Dictionary);
             //BaseExamples();
             //Lesson();
             // Additional();
             #region Homework
-            IBaseCollectionUsing collectionUsing = new ArrayListUsing();
-            BaseUsingTest.Execute(ref collectionUsing);
+            BaseUsingTest.Execute(ref GenericList);
             #endregion
         }
 

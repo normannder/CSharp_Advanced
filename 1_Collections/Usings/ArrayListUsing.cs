@@ -27,7 +27,6 @@ namespace ITEA_Collections.Usings
                 ToConsole($"Array is null!", ConsoleColor.Red);
             else
                 List.AddRange(ts);
-
         }
 
         public void Clear()

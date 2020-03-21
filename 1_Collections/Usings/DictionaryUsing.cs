@@ -8,7 +8,7 @@ namespace ITEA_Collections.Usings
     public class DictionaryUsing : IBaseCollectionUsing
     {
         public Dictionary<int, string> Dictionary { get; set; }
-
+        int key = 0;
         public DictionaryUsing()
         {
             Dictionary = new Dictionary<int, string>();
@@ -16,13 +16,12 @@ namespace ITEA_Collections.Usings
 
         public void Add(object ts)
         {
-            int key = 0;
+            
             Dictionary.Add(key++, ts.ToString());
         }
 
         public void AddMany(object[] ts)
         {
-            int key = 0;
             foreach (var item in ts)
             {
                 Dictionary.Add(key++, item.ToString());
@@ -76,7 +75,6 @@ namespace ITEA_Collections.Usings
 
         public void ShowAll()
         {
-            int key = 0;
             foreach (var item in GetAll())
                 Extensions.ToConsole($"{Dictionary[key++]}: {item}, type - {item.GetType().Name}", ConsoleColor.Cyan);
         }
