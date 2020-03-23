@@ -32,6 +32,7 @@ namespace ITEA_Collections
             //Lesson();
             // Additional();
             #region Homework
+            BaseUsingTest.Execute(ref Dictionary);
             BaseUsingTest.Execute(ref GenericList);
             #endregion
         }

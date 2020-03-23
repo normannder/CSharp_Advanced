@@ -16,7 +16,6 @@ namespace ITEA_Collections.Usings
 
         public void Add(object ts)
         {
-            
             Dictionary.Add(key++, ts.ToString());
         }
 
