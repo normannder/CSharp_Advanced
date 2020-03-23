@@ -28,6 +28,7 @@ namespace ITEA_Collections
 
             IBaseCollectionUsing GenericList = new GenericListUsing();
             IBaseCollectionUsing Dictionary = new DictionaryUsing();
+
             //BaseExamples();
             //Lesson();
             // Additional();
