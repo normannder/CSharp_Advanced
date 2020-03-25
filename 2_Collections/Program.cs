@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
+using ITEA_Collections.Generics;
+using ITEA_Collections.Generics.Testing;
 using ITEA_Collections.CustomCollections;
 using ITEA_Collections.GenericLinkedList;
 using static ITEA_Collections.Common.Extensions;
@@ -13,16 +15,17 @@ namespace ITEA_Collections
     {
         static void Main(string[] args)
         {
+
             #region Lesson
             string[] numbers = new string[] { "1", "2", "3" };
             UseCollection(numbers);
             UseList(numbers);
             UseWeirdYield();
-            
+
             UseEnumerator(numbers);
             UseObservable();
             UseWeirdYield();
-            
+
             Dictionary<int, string> dict = new Dictionary<int, string>();
             for (int i = 1; i < 11; i++)
             {
@@ -36,7 +39,7 @@ namespace ITEA_Collections
             Console.WriteLine();
             foreach (var item in dict)
             {
-                if(item.Key % 2 == 0)
+                if (item.Key % 2 == 0)
                     ToConsoleLine($"{item.Value}; ");
             }
             Console.WriteLine();
@@ -46,11 +49,16 @@ namespace ITEA_Collections
                     ToConsoleLine($"{item.Value}; ");
             }
             #endregion
+            string[] test = { "1", "3" };
             IteaGenericLinkedList<string> iteaGeneric = new IteaGenericLinkedList<string>("First");
-            Console.WriteLine(iteaGeneric[0]);
-            iteaGeneric.Add("Second");
-            iteaGeneric.InsertByIndex(1, "Third");
-            ToConsole(iteaGeneric.ToString());
+
+            IBaseGenericCollectionUsing<string> genericCollection = new Generics.IteaGenericCollection<string>();
+            BaseGenericUsingTest.Execute(ref genericCollection, test);
+
+            //Console.WriteLine(iteaGeneric[0]);
+            //iteaGeneric.Add("Second");
+            //iteaGeneric.InsertByIndex(1, "Third");
+            //ToConsole(iteaGeneric.ToString());
         }
 
         static void UseCollection(object[] objects)

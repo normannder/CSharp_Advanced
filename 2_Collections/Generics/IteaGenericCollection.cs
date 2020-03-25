@@ -6,49 +6,49 @@ namespace ITEA_Collections.Generics
 {
     public class IteaGenericCollection<T> : IEnumerable<T>, IBaseGenericCollectionUsing<T>
     {
-        private T[] collection;
+        public IteaGenericCollection<T> collection;
 
         #region IBaseGenericCollectionUsing
         public void Add(T ts)
         {
-            throw new NotImplementedException();
+            collection.Add(ts);
         }
 
         public void AddMany(T[] ts)
         {
-            throw new NotImplementedException();
+            collection.AddMany(ts);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            collection.Clear();
         }
 
         public T[] GetAll()
         {
-            throw new NotImplementedException();
+            return collection.GetAll();
         }
 
         public T GetByID(int index)
         {
-            throw new NotImplementedException();
+            return collection.GetByID(index);
         }
 
         public void RemoveByID(int index)
         {
-            throw new NotImplementedException();
+            collection.RemoveByID(index);
         }
 
         public void ShowAll()
         {
-            throw new NotImplementedException();
+            collection.ShowAll();
         }
         #endregion
 
         #region IEnumerable
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new IteaGenericEnumerator<T>(collection.GetAll());
         }
 
         IEnumerator IEnumerable.GetEnumerator()

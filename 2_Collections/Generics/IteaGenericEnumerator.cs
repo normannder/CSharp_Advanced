@@ -6,24 +6,44 @@ namespace ITEA_Collections.Generics
 {
     public class IteaGenericEnumerator<T> : IEnumerator<T>
     {
-        #region IEnumerator
-        public T Current => throw new NotImplementedException();
+        public T[] collection;
+        
+        private int currentIndex = -1;
 
-        object IEnumerator.Current => throw new NotImplementedException();
+        #region IEnumerator
+        public T Current { get; }
+
+        object IEnumerator.Current 
+        { 
+            get 
+            { 
+                return collection[currentIndex]; 
+            } 
+        }
+
+        protected IteaGenericEnumerator() { }
+
+        public IteaGenericEnumerator(T[] incomeCollection)
+        {
+            this.collection = incomeCollection;
+        }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            GC.SuppressFinalize(this);
         }
 
         public bool MoveNext()
         {
-            throw new NotImplementedException();
+            Console.Beep();
+            currentIndex++;
+            return currentIndex < collection.Length && collection[currentIndex] != null;
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            Console.Beep();
+            currentIndex = -1;
         }
         #endregion
     }
