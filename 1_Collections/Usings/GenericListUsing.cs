@@ -21,11 +21,7 @@ namespace ITEA_Collections.Usings
 
         public void AddMany(object[] ts)
         {
-            if (ts is null)
-                Extensions.ToConsole($"Array is null!", ConsoleColor.Red);
-            else
-                foreach (var item in ts)
-                    List.Add(item.ToString());
+            throw new NotImplementedException();
         }
 
         public void Clear()

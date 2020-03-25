@@ -36,6 +36,10 @@ namespace ITEA_Collections
             BaseUsingTest.Execute(ref Dictionary);
             BaseUsingTest.Execute(ref GenericList);
             #endregion
+
+            List<string> a1 = new List<string>();
+            new Dictionary<object, object>();
+
         }
 
         static void BaseExamples()
