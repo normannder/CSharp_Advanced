@@ -1,42 +1,51 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using ITEA_Collections.Common;
 namespace ITEA_Collections.Generics
 {
     public class IteaGenericCollection<T> : IEnumerable<T>, IBaseGenericCollectionUsing<T>
     {
-        public IteaGenericCollection<T> collection;
+        public T[] collection;
+        private int count = 0;
+
+        public IteaGenericCollection()
+        {
+            collection = new T[128];
+        }
+
 
         #region IBaseGenericCollectionUsing
         public void Add(T ts)
         {
-            collection.Add(ts);
+            collection[count] = ts;
+            count++;
         }
 
         public void AddMany(T[] ts)
         {
-            collection.AddMany(ts);
-        }
-
-        public void Clear()
-        {
-            collection.Clear();
-        }
-
-        public T[] GetAll()
-        {
-            return collection.GetAll();
+            foreach (T item in ts) 
+                Add(item);
         }
 
         public T GetByID(int index)
         {
-            return collection.GetByID(index);
+            return collection[index];
         }
 
         public void RemoveByID(int index)
         {
-            collection.RemoveByID(index);
+            collection[index] = default(T);
+        }
+
+        public T[] GetAll()
+        {
+            return collection;
+        }
+
+        public void Clear()
+        {
+            Array.Clear(collection, 0, collection.Length);
         }
 
         public void ShowAll()
@@ -48,12 +57,18 @@ namespace ITEA_Collections.Generics
         #region IEnumerable
         public IEnumerator<T> GetEnumerator()
         {
-            return new IteaGenericEnumerator<T>(collection.GetAll());
+            //T[] arrayToReturn = new T[128];
+            //foreach (var item in collection)
+            //{
+            //    for (int i = 0; i < 128; i++)
+            //        arrayToReturn[i] = item;
+            //}
+            return GetEnumerator();
         }
         
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return (IEnumerator)GetEnumerator();
         }
         #endregion
     }

@@ -25,24 +25,22 @@ namespace ITEA_Collections.Generics
 
         public IteaGenericEnumerator(T[] incomeCollection)
         {
-            this.collection = incomeCollection;
+            collection = incomeCollection;
         }
 
         public void Dispose()
         {
-            GC.SuppressFinalize(this);
+            GC.SuppressFinalize(collection);
         }
 
         public bool MoveNext()
         {
-            Console.Beep();
             currentIndex++;
             return currentIndex < collection.Length && collection[currentIndex] != null;
         }
 
         public void Reset()
         {
-            Console.Beep();
             currentIndex = -1;
         }
         #endregion

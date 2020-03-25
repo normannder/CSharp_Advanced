@@ -16,43 +16,43 @@ namespace ITEA_Collections
         static void Main(string[] args)
         {
 
-            #region Lesson
-            string[] numbers = new string[] { "1", "2", "3" };
-            UseCollection(numbers);
-            UseList(numbers);
-            UseWeirdYield();
+            //#region Lesson
+            //string[] numbers = new string[] { "1", "2", "3" };
+            //UseCollection(numbers);
+            //UseList(numbers);
+            //UseWeirdYield();
 
-            UseEnumerator(numbers);
-            UseObservable();
-            UseWeirdYield();
+            //UseEnumerator(numbers);
+            //UseObservable();
+            //UseWeirdYield();
 
-            Dictionary<int, string> dict = new Dictionary<int, string>();
-            for (int i = 1; i < 11; i++)
-            {
-                dict.Add(i, i.ToString());
-            }
-            Console.WriteLine();
-            foreach (var item in dict)
-            {
-                ToConsoleLine($"{item.Value}; ");
-            }
-            Console.WriteLine();
-            foreach (var item in dict)
-            {
-                if (item.Key % 2 == 0)
-                    ToConsoleLine($"{item.Value}; ");
-            }
-            Console.WriteLine();
-            foreach (var item in dict)
-            {
-                if (item.Key % 2 == 1)
-                    ToConsoleLine($"{item.Value}; ");
-            }
-            #endregion
-            string[] test = { "1", "3" };
-            IteaGenericLinkedList<string> iteaGeneric = new IteaGenericLinkedList<string>("First");
+            //Dictionary<int, string> dict = new Dictionary<int, string>();
+            //for (int i = 1; i < 11; i++)
+            //{
+            //    dict.Add(i, i.ToString());
+            //}
+            //Console.WriteLine();
+            //foreach (var item in dict)
+            //{
+            //    ToConsoleLine($"{item.Value}; ");
+            //}
+            //Console.WriteLine();
+            //foreach (var item in dict)
+            //{
+            //    if (item.Key % 2 == 0)
+            //        ToConsoleLine($"{item.Value}; ");
+            //}
+            //Console.WriteLine();
+            //foreach (var item in dict)
+            //{
+            //    if (item.Key % 2 == 1)
+            //        ToConsoleLine($"{item.Value}; ");
+            //}
+            //#endregion
+            //IteaGenericLinkedList<string> iteaGeneric = new IteaGenericLinkedList<string>("First");
 
-            IBaseGenericCollectionUsing<string> genericCollection = new Generics.IteaGenericCollection<string>();
+            string[] test = { "bibo", "bebo", "cubo", "wubo" };
+            IBaseGenericCollectionUsing<string> genericCollection = new IteaGenericCollection<string>();
             BaseGenericUsingTest.Execute(ref genericCollection, test);
 
             //Console.WriteLine(iteaGeneric[0]);
