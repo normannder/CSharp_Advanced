@@ -50,7 +50,7 @@ namespace ITEA_Collections.Generics
         {
             return new IteaGenericEnumerator<T>(collection.GetAll());
         }
-
+        
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
