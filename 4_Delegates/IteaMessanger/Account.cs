@@ -22,7 +22,7 @@ namespace IteaDelegates.IteaMessanger
         {
             Username = username;
             Messages = new List<Message>();
-            //NewMessage += OnNewMessage;
+            NewMessage += OnNewMessage;
         }
 
         public Message CreateMessage(string text, Account to)
@@ -37,8 +37,7 @@ namespace IteaDelegates.IteaMessanger
             message.Send = true;
             message.To.Messages.Add(message);
             message.To.NewMessage(message);
-            if(OnSend != null)
-                OnSend(this, new OnSendEventArgs(message.ReadMessage(this), message.From.Username, message.To.Username));
+            OnSend?.Invoke(this, new OnSendEventArgs(message.ReadMessage(this), message.From.Username, message.To.Username));
         }
 
         public void OnNewMessage(Message message)
