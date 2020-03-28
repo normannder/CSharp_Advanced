@@ -14,7 +14,6 @@ namespace ITEA_Collections.Generics
             collection = new T[128];
         }
 
-
         #region IBaseGenericCollectionUsing
         public void Add(T ts)
         {
@@ -45,7 +44,7 @@ namespace ITEA_Collections.Generics
 
         public void Clear()
         {
-            Array.Clear(collection, 0, collection.Length);
+            collection = new T[128];
         }
 
         public void ShowAll()
@@ -69,6 +68,15 @@ namespace ITEA_Collections.Generics
         IEnumerator IEnumerable.GetEnumerator()
         {
             return (IEnumerator)GetEnumerator();
+        }
+
+        public IEnumerable<T> ToEnumerableOnlyOddIndex()
+        {
+            for(int i = 0; i < collection.Length; i++)
+            {
+                if (i % 2 != 0)
+                    yield return collection[i];
+            }
         }
         #endregion
     }
