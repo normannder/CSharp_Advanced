@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using StrategyGame.Warriors.Models;
+using StrategyGame.Warriors.Models.Infantry;
+using StrategyGame.Actions;
 using static ITEA_Collections.Common.Extensions;
 
 
@@ -10,33 +12,43 @@ namespace StrategyGame
     {
         static void Main(string[] args)
         {
-            /*
-            List<Gunner> gunners = new List<Gunner>();
-            for (int i = 0; i < 15; i++)
-                gunners.Add(new Gunner());
 
-            List<Pikeman> pikemen = new List<Pikeman>();
-            for (int i = 0; i < 16; i++)
-                pikemen.Add(new Pikeman());
+            //List<Gunner> gunners = new List<Gunner>();
+            //for (int i = 0; i < 15; i++)
+            //    gunners.Add(new Gunner());
+
+            //List<Pikeman> pikemen = new List<Pikeman>();
+            //for (int i = 0; i < 16; i++)
+            //    pikemen.Add(new Pikeman());
+
+            //List<Bowman> bowmen = new List<Bowman>();
+            //for (int i = 0; i < 18; i++)
+            //    bowmen.Add(new Bowman());
+
+            //var battle1 = new Battle<Gunner, Pikeman>(gunners, pikemen);
+            //ToConsole(battle1.CountResults(), ConsoleColor.Green);
+
+            //var battle2 = new Battle<Pikeman, Bowman>(pikemen, bowmen);
+            //ToConsole(battle2.CountResults(), ConsoleColor.Green);
+
+            //var battle3 = new RangeBattle(gunners, bowmen);
+            //ToConsole(battle3.CountResults(), ConsoleColor.Green);
+
+            List<Knight> knights = new List<Knight>();
+            for (int i = 0; i < 15; i++)
+                knights.Add(new Knight());
 
             List<Bowman> bowmen = new List<Bowman>();
             for (int i = 0; i < 18; i++)
                 bowmen.Add(new Bowman());
 
-            var battle1 = new Battle<Gunner, Pikeman>(gunners, pikemen);
+            var battle1 = new Battle<Knight, Bowman>(knights, bowmen);
             ToConsole(battle1.CountResults(), ConsoleColor.Green);
-
-            var battle2 = new Battle<Pikeman, Bowman>(pikemen, bowmen);
-            ToConsole(battle2.CountResults(), ConsoleColor.Green);
-
-            var battle3 = new RangeBattle(gunners, bowmen);
-            ToConsole(battle3.CountResults(), ConsoleColor.Green);
-            */
 
             Guid a = new Guid();
             Guid b = Guid.NewGuid();
 
-            ToConsole($"{a}, {b}");
+            //ToConsole($"{a}, {b}");
 
         }
     }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using StrategyGame.Base.Interfaces;
 using StrategyGame.Warriors.Abstractions;
-using StrategyGame.Warriors.Interfaces;
 
 namespace StrategyGame.Warriors.Models
 {
@@ -17,7 +16,6 @@ namespace StrategyGame.Warriors.Models
         {
             enemy.Health -= this.Strength;
         }
-
 
         public override string Unnamed() => "For the King!";
 
