@@ -18,6 +18,7 @@ namespace IteaLinq
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
+        public string City { get; set; }
 
         public Person(string name, int age)
         {
