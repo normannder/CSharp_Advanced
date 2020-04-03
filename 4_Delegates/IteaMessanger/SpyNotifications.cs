@@ -13,7 +13,6 @@ namespace IteaDelegates.IteaMessanger
             Observable = observable;
             Observable.OnSend += Detector;
         }
-
         public void Detector(object sender, OnSendEventArgs e)
         {
             ToConsole($"Detected message sending...\n From: {e.From}\n To: {e.To}\n Text: {e.Text}", ConsoleColor.Red);
