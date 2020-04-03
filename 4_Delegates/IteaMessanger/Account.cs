@@ -16,7 +16,7 @@ namespace IteaDelegates.IteaMessanger
     {
         
         public string Username { get; private set; }
-        public List<Message> Messages { get; set; }
+        public List<Message> Messages { get; set; } = new List<Message>();
 
         public event OnSend OnSend;
         public event OnGroupSend OnGroupSend;
@@ -26,7 +26,6 @@ namespace IteaDelegates.IteaMessanger
         public Account(string username)
         {
             Username = username;
-            Messages = new List<Message>();
             NewMessage += OnNewMessage;
         }
 
@@ -93,6 +92,5 @@ namespace IteaDelegates.IteaMessanger
             }
             ToConsole($"---{string.Concat(str.Select(x => "-"))}---");
         }
-
     }
 }
