@@ -40,10 +40,5 @@ namespace IteaLinq
         {
             return $"{Guid.ToString().Substring(0, 5)}_{Name}: {Gender}, {Age}, {Email}";
         }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
     }
 }
