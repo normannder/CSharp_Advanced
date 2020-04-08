@@ -26,7 +26,7 @@ namespace IteaLinqToSql.Controllers
             return service
                 .GetQuery()
                 .Include(x => x.Logins)
-                .Where(x => x.Id > 1)
+                .Where(x => x.Logins.Count > 0)
                 .ToList();
         }
 
