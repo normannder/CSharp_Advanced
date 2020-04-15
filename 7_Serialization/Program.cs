@@ -21,32 +21,42 @@ namespace IteaSerialization
         //    AppendToFile("example1.txt", "1");
         //    ToConsole(ReadFromFile("example.txt", ""));
             Person person = new Person("Alex", Gender.Man, 21, "alexs98@gmail.com");
-            List<Person> people = new List<Person>
+            List<Person> workers = new List<Person>
             {
                 new Person("Pol", Gender.Man, 37, "pol@gmail.com"),
                 new Person("Ann", Gender.Woman, 25, "ann@yahoo.com"),
                 new Person("Alex", Gender.Man, 21, "alex@gmail.com"),
                 new Person("Harry", Gender.Man, 58, "harry@yahoo.com"),
-                new Person("Germiona", Gender.Woman, 18, "germiona@gmail.com"),
+                new Person("Hermione", Gender.Woman, 18, "hermione@gmail.com"),
+                new Person("Richard", Gender.Man, 19, "richard@gmail.com"),
+                new Person("Barry", Gender.Man, 20, "richard@gmail.com"),
                 new Person("Ron", Gender.Man, 24, "ron@yahoo.com"),
                 new Person("Etc1", Gender.etc, 42, "etc1@yahoo.com"),
-                new Person("Etc2", Gender.etc, 42, "etc2@gmail.com"),
+                new Person("Etc2", Gender.etc, 49, "etc2@gmail.com"),
+                new Person("Harald", Gender.etc, 34, "harald@yahoo.com"),
+                new Person("Bjorn", Gender.Man, 28, "bjorn@gmail.com"),
             };
 
-            Company microsoft = new Company("Microsoft");
+            Company RellbaumCorp = new Company("RellbaumCorp");
+            Department securityDept = new Department("SecurityDepartment");
+            Department marketingDept = new Department("MarketingDepartment");
+            Department developmentDept = new Department("DevelopmentDepartment");
+
             Company apple = new Company("Apple");
 
-            people.ForEach(x => {
-                if (x.Age < people.Average(a => a.Age))
-                    x.SetCompany(microsoft);
+            workers.ForEach(worker => 
+            {
+                if (worker.Age <= 20)
+                    worker.SetDepartment(marketingDept);
+                else if (worker.Age > 20 && worker.Age <= 30)
+                    worker.SetDepartment(securityDept);
                 else
-                    x.SetCompany(apple);
+                    worker.SetDepartment(developmentDept);
             }) ;
 
-            XmlSerialize("exampleXml", people);
-            JsonSerialize("microsoftJson", microsoft);
-            JsonSerialize("appleJson", apple);
-            Company appleFromFile = JsonDeserialize("appleJson");
+            XmlSerialize("WorkersXml", workers);
+            JsonSerialize("RellbaumCorpJson", RellbaumCorp);
+            //Company appleFromFile = JsonDeserialize("appleJson");
         }
 
         #region Serialization

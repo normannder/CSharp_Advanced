@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Xml.Serialization;
 
-using Newtonsoft.Json;
 
 namespace IteaSerialization
 {
@@ -25,6 +25,9 @@ namespace IteaSerialization
         [JsonIgnore]
         [XmlIgnore]
         public Company Company { get; set; }
+        [JsonIgnore]
+        [XmlIgnore]
+        public Department Department { get; set; }
 
         protected Person() { }
 
@@ -46,10 +49,10 @@ namespace IteaSerialization
         /// Set company for person
         /// </summary>
         /// <param name="company">Company to set</param>
-        public void SetCompany(Company company)
+        public void SetDepartment(Department department)
         {
-            Company = company;
-            Company.People.Add(this);
+            Department = department;
+            Department.PeopleInDepartment.Add(this);
         }
 
         public override string ToString()
