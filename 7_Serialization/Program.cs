@@ -41,24 +41,33 @@ namespace IteaSerialization
             Department securityDept = new Department("SecurityDepartment");
             Department marketingDept = new Department("MarketingDepartment");
             Department developmentDept = new Department("DevelopmentDepartment");
+            RellbaumCorp.AddDepartment(securityDept);
+            RellbaumCorp.AddDepartment(marketingDept);
+            RellbaumCorp.AddDepartment(developmentDept);
 
             Company apple = new Company("Apple");
 
             workers.ForEach(worker => 
             {
                 if (worker.Age <= 20)
-                    worker.SetDepartment(marketingDept);
+                    worker.SetToDepartment(marketingDept);
                 else if (worker.Age > 20 && worker.Age <= 30)
-                    worker.SetDepartment(securityDept);
+                    worker.SetToDepartment(securityDept);
                 else
-                    worker.SetDepartment(developmentDept);
+                    worker.SetToDepartment(developmentDept);
             }) ;
 
-            XmlSerialize("WorkersXml", workers);
-            JsonSerialize("RellbaumCorpJson", RellbaumCorp);
-            //Company appleFromFile = JsonDeserialize("appleJson");
-        }
 
+            JsonSerialize("RellbaumCorpJson", RellbaumCorp);
+            Company checkСorrectness = CompJsonDeserialize("RellbaumCorpJson");
+
+            if (RellbaumCorp.Equals(checkСorrectness))
+            {
+                Console.WriteLine("correct");
+            }
+            else Console.WriteLine("incorrect");
+        }
+        
         #region Serialization
         public static void XmlSerialize<T>(string path, T obj) where T : class
         {
@@ -91,15 +100,20 @@ namespace IteaSerialization
             }
         }
 
-        public static Company JsonDeserialize(string path)
+        public static Company CompJsonDeserialize(string path)
         {
             using (var streamReader = new StreamReader($"{path}.json"))
             {
-                //var startMemory = GC.GetTotalMemory(true);
                 string dataStr = streamReader.ReadToEnd();
                 return JsonConvert.DeserializeObject<Company>(dataStr);
-                //var endMemory = GC.GetTotalMemory(true);
-                //Console.WriteLine($"Total memory: {endMemory - startMemory}");
+            }
+        }
+        public static Department DeptJsonDeserialize(string path)
+        {
+            using (var streamReader = new StreamReader($"{path}.json"))
+            {
+                string dataStr = streamReader.ReadToEnd();
+                return JsonConvert.DeserializeObject<Department>(dataStr);
             }
         }
         #endregion

@@ -21,5 +21,14 @@ namespace IteaSerialization
             Id = Guid.NewGuid();
             Name = name;
         }
+        public void AddDepartment(Department department)
+        {
+            DepartmentsInCompany.Add(department);
+        }
+        public override bool Equals(object obj)
+        {
+            var company = obj as Company;
+            return company != null && Id == company.Id && Name.Equals(company.Name);
+        }
     }
 }

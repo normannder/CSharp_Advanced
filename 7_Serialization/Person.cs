@@ -49,7 +49,7 @@ namespace IteaSerialization
         /// Set company for person
         /// </summary>
         /// <param name="company">Company to set</param>
-        public void SetDepartment(Department department)
+        public void SetToDepartment(Department department)
         {
             Department = department;
             Department.PeopleInDepartment.Add(this);
