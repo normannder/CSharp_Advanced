@@ -26,29 +26,29 @@ namespace IteaThreads
             Console.WriteLine($"Process name: {current.ProcessName}");
             Console.WriteLine($"MachineName: {current.MachineName}");
             Console.WriteLine($"PrivateMemorySize64: {current.PrivateMemorySize64}");
-            Console.WriteLine("Kill Chrome? (Y - yes, else - no)", ConsoleColor.Red);
-            if (Console.ReadKey().Key == ConsoleKey.Y)
-                Process
-                    .GetProcessesByName("chrome")
-                    .Once(() => Console.Write(""))
-                    .ToList()
-                    .ForEach(x =>
-                    {
-                        Console.WriteLine($"{x.ProcessName}/{x.Id}");
-                        x.Kill();
-                    });
-            else Console.WriteLine("\nOkay");
+            //Console.WriteLine("Kill Chrome? (Y - yes, else - no)", ConsoleColor.Red);
+            //if (Console.ReadKey().Key == ConsoleKey.Y)
+            //    Process
+            //        .GetProcessesByName("chrome")
+            //        .Once(() => Console.Write(""))
+            //        .ToList()
+            //        .ForEach(x =>
+            //        {
+            //            Console.WriteLine($"{x.ProcessName}/{x.Id}");
+            //            x.Kill();
+            //        });
+            //else Console.WriteLine("\nOkay");
 
-            List<object> list = new List<object>();
+            //List<object> list = new List<object>();
 
-            list = Enumerable.Range(0, 100_000_000).Select(x => (object)x).ToList();
+            //list = Enumerable.Range(0, 100_000_000).Select(x => (object)x).ToList();
 
-            Console.WriteLine($"PrivateMemorySize64: {current.PrivateMemorySize64}");
+            //Console.WriteLine($"PrivateMemorySize64: {current.PrivateMemorySize64}");
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
-            Thread.CurrentThread.Name = "Main";
-            Thread.CurrentThread.Priority = ThreadPriority.Highest;
+            //Thread.CurrentThread.Name = "Main";
+            //Thread.CurrentThread.Priority = ThreadPriority.Highest;
 
             ThreadStart threadStart1 = Write;
 
@@ -57,23 +57,21 @@ namespace IteaThreads
                 Name = "Write1"
             };
 
-            thread1.Start();
-
             Thread thread2 = new Thread(new ThreadStart(Write))
             {
-                Priority = ThreadPriority.Lowest,
                 Name = "Write2"
             };
 
+            thread1.Start();
             thread2.Start();
 
-            new Thread(new ParameterizedThreadStart(WriteFromTo)) // new Thread(WriteFromTo)
-            {
-                Priority = ThreadPriority.AboveNormal,
-                Name = "WriteFromTo"
-            }.Start(new MyStruct { From = 0, To = 2 });
+            //new Thread(new ParameterizedThreadStart(WriteFromTo)) // new Thread(WriteFromTo)
+            //{
+            //    Priority = ThreadPriority.AboveNormal,
+            //    Name = "WriteFromTo"
+            //}.Start(new MyStruct { From = 0, To = 2 });
 
-            Write();
+            //Write();
 
             // deadlock
 
@@ -87,17 +85,17 @@ namespace IteaThreads
 
             //мьютексы
 
-            MutexExample.IncThread mt1 = new MutexExample.IncThread("Inc thread", 5);
+            //MutexExample.IncThread mt1 = new MutexExample.IncThread("Inc thread", 5);
 
-            // разрешить инкременирующему потоку начаться
-            Thread.Sleep(1);
+            //// разрешить инкременирующему потоку начаться
+            //Thread.Sleep(1);
 
-            MutexExample.DecThread mt2 = new MutexExample.DecThread("Dec thread", 5);
+            //MutexExample.DecThread mt2 = new MutexExample.DecThread("Dec thread", 5);
 
-            mt1.thread.Join();
-            mt2.thread.Join();
+            //mt1.thread.Join();
+            //mt2.thread.Join();
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         public static void Write()
@@ -105,7 +103,7 @@ namespace IteaThreads
             lock (locker)
             {
                 Thread thread = Thread.CurrentThread;
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     counter++;
                     Console.WriteLine($"{thread.Name}: {i}, counter: {counter}");
